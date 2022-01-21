@@ -4,7 +4,8 @@ import IniciarSesion from "./layout/iniciarSesion";
 import Layout from "./layout/Layout";
 import Inicio from "./pages/Inicio";
 import LoginForm from "./pages/LoginForm";
-
+import NuevoCliente from "./pages/NuevoCliente";
+import EditarCliente from "./pages/EditarCliente"
 
 function App() {
   return (

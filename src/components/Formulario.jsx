@@ -1,7 +1,13 @@
 import {Formik, Form, Field} from "formik";
+import * as Yup from 'yup'
 
 function Formulario() {
 
+	// validaciones
+	const nuevoClienteSchema = Yup.object().shape({
+		name: Yup.string().required("El nombre del cliente es Obligatorio"),
+		empresa: Yup.string().required("El nombre de la eempresa es obligatorio")
+	})
 
 	// evento Submit
 	const handleSubmit = (values) => {
@@ -23,11 +29,14 @@ function Formulario() {
 					telefono: "",
 					notas: "",
 				}}
+				validationSchema={nuevoClienteSchema}
 				onSubmit={ (values) => {
 					handleSubmit(values)
 				}}
 			>
-				{() => (
+				{(data) => {
+					console.log(data)
+					return (
 					<Form className="mt-10">
 						<div className="mb-4">
 							<label htmlFor="nombre" className=" text-gray-800">
@@ -96,7 +105,7 @@ function Formulario() {
 							className=" mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold text-lg"
 						/>
 					</Form>
-				)}
+				)}}
 			</Formik>
 		</div>
 	);

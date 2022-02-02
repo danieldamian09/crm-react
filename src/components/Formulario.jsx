@@ -1,4 +1,3 @@
-import React from "react";
 import {Formik, Form, Field} from "formik";
 
 function Formulario() {
@@ -8,66 +7,86 @@ function Formulario() {
 				Agregar Cliente
 			</h1>
 
-			<Formik>
-				<Form className="mt-10">
-					<div className="mb-4">
-						<label htmlFor="nombre" className=" text-gray-800">
-							Nombre:
-						</label>
-						<Field
-							type="text"
-							className=" mt-2 block w-full p-3 bg-gray-50"
-							id="nombre"
-							placeholder="Nombre del cliente"
+			{/* Declaras el estado inicial del formulario */}
+			<Formik
+				initialValues={{
+					nombre: "",
+					empresa: "",
+					email: "",
+					telefono: "",
+					notas: "",
+				}}
+			>
+				{() => (
+					<Form className="mt-10">
+						<div className="mb-4">
+							<label htmlFor="nombre" className=" text-gray-800">
+								Nombre:
+							</label>
+							<Field
+								type="text"
+								name="nombre"
+								className=" mt-2 block w-full p-3 bg-gray-50"
+								id="nombre"
+								placeholder="Nombre del cliente"
+							/>
+						</div>
+						<div className="mb-4">
+							<label htmlFor="empresa" className=" text-gray-800">
+								Empresa:
+							</label>
+							<Field
+								type="text"
+								name="empresa"
+								className=" mt-2 block w-full p-3 bg-gray-50"
+								id="empresa"
+								placeholder="Empresa del cliente"
+							/>
+						</div>
+						<div className="mb-4">
+							<label htmlFor="email" className=" text-gray-800">
+								Email:
+							</label>
+							<Field
+								type="email"
+								name="email"
+								className=" mt-2 block w-full p-3 bg-gray-50"
+								id="email"
+								placeholder="Email del cliente"
+							/>
+						</div>
+						<div className="mb-4">
+							<label htmlFor="telefono" className=" text-gray-800">
+								Teléfono:
+							</label>
+							<Field
+								type="tel"
+								name="telefono"
+								className=" mt-2 block w-full p-3 bg-gray-50"
+								id="telefono"
+								placeholder="Teléfono del cliente"
+							/>
+						</div>
+						<div className="mb-4">
+							<label htmlFor="notas" className=" text-gray-800">
+								Notas:
+							</label>
+							<Field
+								as="textarea"
+								name="notas"
+								type="text"
+								className=" mt-2 block w-full p-3 bg-gray-50 h-40"
+								id="notas"
+								placeholder="Notas del cliente"
+							/>
+						</div>
+						<input
+							type="submit"
+							value="Agregar Cliente"
+							className=" mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold text-lg"
 						/>
-					</div>
-          <div className="mb-4">
-						<label htmlFor="empresa" className=" text-gray-800">
-							Empresa:
-						</label>
-						<Field
-							type="text"
-							className=" mt-2 block w-full p-3 bg-gray-50"
-							id="empresa"
-							placeholder="Empresa del cliente"
-						/>
-					</div>
-          <div className="mb-4">
-						<label htmlFor="email" className=" text-gray-800">
-							Email:
-						</label>
-						<Field
-							type="email"
-							className=" mt-2 block w-full p-3 bg-gray-50"
-							id="email"
-							placeholder="Email del cliente"
-						/>
-					</div>
-          <div className="mb-4">
-						<label htmlFor="telefono" className=" text-gray-800">
-							Teléfono:
-						</label>
-						<Field
-							type="tel"
-							className=" mt-2 block w-full p-3 bg-gray-50"
-							id="telefono"
-							placeholder="Teléfono del cliente"
-						/>
-					</div>
-          <div className="mb-4">
-						<label htmlFor="notas" className=" text-gray-800">
-							Notas:
-						</label>
-						<Field
-              as="textarea"
-							type="text"
-							className=" mt-2 block w-full p-3 bg-gray-50 h-40"
-							id="notas"
-							placeholder="Notas del cliente"
-						/>
-					</div>
-          <input type="submit" value="Agregar Cliente" className=" mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold text-lg" />
-				</Form>
+					</Form>
+				)}
 			</Formik>
 		</div>
 	);

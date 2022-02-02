@@ -5,8 +5,7 @@ function Formulario() {
 
 	// validaciones
 	const nuevoClienteSchema = Yup.object().shape({
-		name: Yup.string().required("El nombre del cliente es Obligatorio"),
-		empresa: Yup.string().required("El nombre de la eempresa es obligatorio")
+		nombre: Yup.string().required("El nombre del cliente es Obligatorio"),
 	})
 
 	// evento Submit
@@ -29,13 +28,14 @@ function Formulario() {
 					telefono: "",
 					notas: "",
 				}}
-				validationSchema={nuevoClienteSchema}
+				
 				onSubmit={ (values) => {
 					handleSubmit(values)
 				}}
+				validationSchema={nuevoClienteSchema}
 			>
-				{(data) => {
-					console.log(data)
+				{({errors, touched}) => {
+					// console.log(data)
 					return (
 					<Form className="mt-10">
 						<div className="mb-4">
@@ -49,6 +49,9 @@ function Formulario() {
 								id="nombre"
 								placeholder="Nombre del cliente"
 							/>
+							{errors.nombre && touched.nombre ? (
+								<div className=" text-center my-4 bg-red-600 text-white font-bold p-3 uppercase">{errors.nombre}</div>
+							) : null}
 						</div>
 						<div className="mb-4">
 							<label htmlFor="empresa" className=" text-gray-800">

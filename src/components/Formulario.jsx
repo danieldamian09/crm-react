@@ -20,8 +20,24 @@ function Formulario() {
 	});
 
 	// evento Submit
-	const handleSubmit = (values) => {
-		console.log(values);
+	const handleSubmit = async (values) => {
+		try {
+			const url = "http://localhost:4000/clientes"
+
+			const respuesta = await fetch(url, {
+				method:"POST",
+				body: JSON.stringify(values),
+				headers: {
+					"Content-Type": "application/json"
+				}
+			})
+			console.log(respuesta)
+			const resultado = await respuesta.json()
+			console.log(resultado)
+
+		} catch (error) {
+			console.log(error)
+		}
 	};
 
 	return (

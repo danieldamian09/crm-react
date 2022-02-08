@@ -1,5 +1,4 @@
 import {Formik, Form, Field} from "formik";
-import {Children} from "react/cjs/react.production.min";
 import * as Yup from "yup";
 import Alerta from "./Alerta";
 
@@ -10,6 +9,14 @@ function Formulario() {
 			.min(3, "El nombre es muy corto")
 			.max(20, "El nombre es muy largo")
 			.required("El nombre del cliente es Obligatorio"),
+		empresa: Yup.string().required("El nombre de la empresa es obligatorio"),
+		email: Yup.string()
+			.email("Email no valido")
+			.required("El email es Obligatorio"),
+		telefono: Yup.number()
+			.typeError("Numero no es valido")
+			.integer("Numero no valido")
+			.positive("Numero no valido"),
 	});
 
 	// evento Submit
@@ -38,7 +45,7 @@ function Formulario() {
 				validationSchema={nuevoClienteSchema}
 			>
 				{({errors, touched}) => {
-					// console.log(data)
+					//? console.log(data)
 					return (
 						<Form className="mt-10">
 							<div className="mb-4">
@@ -67,6 +74,9 @@ function Formulario() {
 									id="empresa"
 									placeholder="Empresa del cliente"
 								/>
+								{errors.empresa && touched.empresa ? (
+									<Alerta>{errors.empresa}</Alerta>
+								) : null}
 							</div>
 							<div className="mb-4">
 								<label htmlFor="email" className=" text-gray-800">
@@ -79,6 +89,9 @@ function Formulario() {
 									id="email"
 									placeholder="Email del cliente"
 								/>
+								{errors.email && touched.email ? (
+									<Alerta>{errors.email}</Alerta>
+								) : null}
 							</div>
 							<div className="mb-4">
 								<label htmlFor="telefono" className=" text-gray-800">
@@ -91,6 +104,9 @@ function Formulario() {
 									id="telefono"
 									placeholder="Teléfono del cliente"
 								/>
+								{errors.telefono && touched.telefono ? (
+									<Alerta>{errors.telefono}</Alerta>
+								) : null}
 							</div>
 							<div className="mb-4">
 								<label htmlFor="notas" className=" text-gray-800">

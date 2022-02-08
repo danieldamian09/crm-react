@@ -55,8 +55,10 @@ function Formulario() {
 					telefono: "",
 					notas: "",
 				}}
-				onSubmit={(values) => {
-					handleSubmit(values);
+				onSubmit={ async (values, {resetForm}) => {
+					await handleSubmit(values);
+					// reset formulario (es asincrono para esperar la respuesta de la API)
+					resetForm()
 				}}
 				validationSchema={nuevoClienteSchema}
 			>

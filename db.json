@@ -7,6 +7,14 @@
       "telefono": "01149458678",
       "notas": "Notas",
       "id": 1
+    },
+    {
+      "nombre": "Rebeca",
+      "empresa": "H.R FronEnd",
+      "email": "humbertorivero_9@hotmail.com",
+      "telefono": "01149458678",
+      "notas": "Registro Rebeca",
+      "id": 2
     }
   ]
 }

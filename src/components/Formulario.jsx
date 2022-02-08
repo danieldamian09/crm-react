@@ -1,8 +1,14 @@
 import {Formik, Form, Field} from "formik";
+import {useNavigate} from "react-router-dom"
 import * as Yup from "yup";
 import Alerta from "./Alerta";
 
 function Formulario() {
+
+	// para redirecionar al usuario
+	const navigate = useNavigate()
+
+
 	// validaciones
 	const nuevoClienteSchema = Yup.object().shape({
 		nombre: Yup.string()
@@ -34,6 +40,9 @@ function Formulario() {
 			console.log(respuesta)
 			const resultado = await respuesta.json()
 			console.log(resultado)
+
+			// para redirecionar al usuario
+			navigate("/clientes")
 
 		} catch (error) {
 			console.log(error)

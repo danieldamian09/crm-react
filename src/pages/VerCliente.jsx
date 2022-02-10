@@ -1,6 +1,11 @@
-import React from 'react'
+import { useParams } from "react-router-dom"
 
 const VerCliente = () => {
+
+  const {id} = useParams()
+
+  console.log(id)
+
   return (
     <div>
       <h1>Ver Cliente</h1>

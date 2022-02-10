@@ -25,7 +25,26 @@ const VerCliente = () => {
 
   return (
     <div>
-      <h1>Ver Cliente</h1>
+      <p className=" text-2xl text-gray-600 mt-4">
+        <span className="  text-gray-800 uppercase font-bold">Cliente:</span>
+        {cliente.nombre}
+      </p>
+      <p className=" text-2xl text-gray-600 mt-4">
+        <span className="  text-gray-800 uppercase font-bold">Email:</span>
+        {cliente.email}
+      </p>
+      <p className=" text-2xl text-gray-600 mt-4">
+        <span className="  text-gray-800 uppercase font-bold">Teléfono:</span>
+        {cliente.telefono}
+      </p>
+      <p className=" text-2xl text-gray-600 mt-4">
+        <span className="  text-gray-800 uppercase font-bold">Empresa:</span>
+        {cliente.empresa}
+      </p>
+      <p className=" text-2xl text-gray-600 mt-4">
+        <span className="  text-gray-800 uppercase font-bold">Notas:</span>
+        {cliente.notas}
+      </p>
     </div>
   )
 }

@@ -20,7 +20,6 @@ const VerCliente = () => {
 		setCargando(false);
 	};
 
-	console.log(cargando);
 
 	useEffect(() => {
 		obtenerClienteAPI();
@@ -28,8 +27,8 @@ const VerCliente = () => {
 
 	return (
 		<div>
-			{cargando ? (
-				"Cargando...."
+			{Object.keys(cliente).length === 0 ? (
+				"No hay resultados...."
 			) : (
 				<>
 					<h1 className="font-black text-4xl text-blue-900">

@@ -23,6 +23,22 @@
       "telefono": "1120202020",
       "notas": "",
       "id": 3
+    },
+    {
+      "nombre": "Humberto",
+      "empresa": "H.R FronEnd",
+      "email": "humbertorivero9@gmail.com",
+      "telefono": "01149458678",
+      "notas": "notas",
+      "id": 4
+    },
+    {
+      "nombre": "Humberto",
+      "empresa": "H.R FronEnd",
+      "email": "humbertorivero9@gmail.com",
+      "telefono": "01149458678",
+      "notas": "pruebas",
+      "id": 5
     }
   ]
 }

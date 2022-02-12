@@ -3,12 +3,11 @@ import {useParams} from "react-router-dom";
 
 const VerCliente = () => {
 	const [cliente, setCliente] = useState({});
-	const [cargando, setCargando] = useState(false);
+	const [cargando, setCargando] = useState(true);
 
 	const {id} = useParams();
 
 	const obtenerClienteAPI = async () => {
-		setCargando(!cargando);
 		try {
 			const url = `http://localhost:4000/clientes/${id}`;
 			const respuesta = await fetch(url);
@@ -17,7 +16,7 @@ const VerCliente = () => {
 		} catch (error) {
 			console.log(error);
 		}
-		setCargando(false);
+		setCargando(!cargando);
 	};
 
 
@@ -27,7 +26,7 @@ const VerCliente = () => {
 
 	return (
 		<div>
-			{Object.keys(cliente).length === 0 ? (
+			{cargando ? <p>Cargando...</p> :  Object.keys(cliente).length === 0 ? (
 				"No hay resultados...."
 			) : (
 				<>

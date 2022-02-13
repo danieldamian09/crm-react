@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom"
 import * as Yup from "yup";
 import Alerta from "./Alerta";
 
-function Formulario() {
+function Formulario({cliente}) {
 
 	// para redirecionar al usuario
 	const navigate = useNavigate()

@@ -58,12 +58,13 @@ function Formulario({cliente}) {
 			{/* Declaras el estado inicial del formulario */}
 			<Formik
 				initialValues={{
-					nombre: "",
-					empresa: "",
-					email: "",
-					telefono: "",
-					notas: "",
+					nombre: cliente?.nombre ?? "",
+					empresa: cliente?.empresa ?? "",
+					email: cliente?.email ?? "",
+					telefono: cliente?.telefono ?? "",
+					notas: cliente?.notas ?? "",
 				}}
+				enableReinitialize={true}
 				onSubmit={ async (values, {resetForm}) => {
 					await handleSubmit(values);
 					// reset formulario (es asincrono para esperar la respuesta de la API)
@@ -159,6 +160,11 @@ function Formulario({cliente}) {
 			</Formik>
 		</div>
 	);
+}
+
+// Valores por default 
+Formulario.defaultProps ={
+	cliente:{}
 }
 
 export default Formulario;

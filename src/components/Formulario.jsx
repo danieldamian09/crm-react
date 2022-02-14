@@ -1,14 +1,13 @@
 import {Formik, Form, Field} from "formik";
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
 import * as Yup from "yup";
-import { object } from "yup";
+import {object} from "yup";
 import Alerta from "./Alerta";
+import Spinner from "./Spinner";
 
-function Formulario({cliente}) {
-
+function Formulario({cliente, cargando}) {
 	// para redirecionar al usuario
-	const navigate = useNavigate()
-
+	const navigate = useNavigate();
 
 	// validaciones
 	const nuevoClienteSchema = Yup.object().shape({
@@ -29,28 +28,29 @@ function Formulario({cliente}) {
 	// evento Submit
 	const handleSubmit = async (values) => {
 		try {
-			const url = "http://localhost:4000/clientes"
+			const url = "http://localhost:4000/clientes";
 
 			const respuesta = await fetch(url, {
-				method:"POST",
+				method: "POST",
 				body: JSON.stringify(values),
 				headers: {
-					"Content-Type": "application/json"
-				}
-			})
-			console.log(respuesta)
-			const resultado = await respuesta.json()
-			console.log(resultado)
+					"Content-Type": "application/json",
+				},
+			});
+			console.log(respuesta);
+			const resultado = await respuesta.json();
+			console.log(resultado);
 
 			// para redirecionar al usuario
-			navigate("/clientes")
-
+			navigate("/clientes");
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		}
 	};
 
-	return (
+	return cargando ? (
+		<Spinner />
+	) : (
 		<div className=" bg-white mt-10 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto">
 			<h1 className=" text-gray-600 font-bold text-xl uppercase text-center">
 				{cliente?.nombre ? "Editar Cliente" : "Agregar Cliente"}
@@ -66,10 +66,10 @@ function Formulario({cliente}) {
 					notas: cliente?.notas ?? "",
 				}}
 				enableReinitialize={true}
-				onSubmit={ async (values, {resetForm}) => {
+				onSubmit={async (values, {resetForm}) => {
 					await handleSubmit(values);
 					// reset formulario (es asincrono para esperar la respuesta de la API)
-					resetForm()
+					resetForm();
 				}}
 				validationSchema={nuevoClienteSchema}
 			>
@@ -163,9 +163,10 @@ function Formulario({cliente}) {
 	);
 }
 
-// Valores por default 
-Formulario.defaultProps ={
-	cliente:{}
-}
+// Valores por default
+Formulario.defaultProps = {
+	cliente: {},
+	cargando: false
+};
 
 export default Formulario;

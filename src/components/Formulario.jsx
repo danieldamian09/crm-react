@@ -1,6 +1,7 @@
 import {Formik, Form, Field} from "formik";
 import {useNavigate} from "react-router-dom"
 import * as Yup from "yup";
+import { object } from "yup";
 import Alerta from "./Alerta";
 
 function Formulario({cliente}) {
@@ -52,7 +53,7 @@ function Formulario({cliente}) {
 	return (
 		<div className=" bg-white mt-10 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto">
 			<h1 className=" text-gray-600 font-bold text-xl uppercase text-center">
-				Agregar Cliente
+				{cliente?.nombre ? "Editar Cliente" : "Agregar Cliente"}
 			</h1>
 
 			{/* Declaras el estado inicial del formulario */}
@@ -151,7 +152,7 @@ function Formulario({cliente}) {
 							</div>
 							<input
 								type="submit"
-								value="Agregar Cliente"
+								value={cliente?.nombre ? "Editar Cliente" : "Agregar Cliente"}
 								className=" mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold text-lg"
 							/>
 						</Form>

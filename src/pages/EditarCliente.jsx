@@ -1,13 +1,12 @@
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import Formulario from "../components/Formulario"
+import Formulario from "../components/Formulario";
 
 function EditarCliente() {
-
-  const [cliente, setCliente] = useState({});
+	const [cliente, setCliente] = useState({});
 	const [cargando, setCargando] = useState(true);
 
-  const {id} = useParams();
+	const {id} = useParams();
 
 	const obtenerClienteAPI = async () => {
 		try {
@@ -26,7 +25,6 @@ function EditarCliente() {
 		obtenerClienteAPI();
 	}, []);
 
-
 	return (
 		<>
 			<h1 className="font-black text-4xl text-blue-900">Editar Cliente</h1>
@@ -34,10 +32,11 @@ function EditarCliente() {
 				Utiliza este formulario para editar datos de un cliente
 			</p>
 
-			<Formulario
-        cliente={cliente}
-				cargando={cargando}
-      />
+			{cliente?.nombre ? (
+				<Formulario cliente={cliente} cargando={cargando} />
+			) : (
+				<p>Cliente ID no valido</p>
+			)}
 		</>
 	);
 }

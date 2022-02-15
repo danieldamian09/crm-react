@@ -25,20 +25,12 @@
       "id": 3
     },
     {
-      "nombre": "Humberto",
+      "nombre": "Humberto Actualizado",
       "empresa": "H.R FronEnd",
       "email": "humbertorivero9@gmail.com",
       "telefono": "01149458678",
       "notas": "notas",
       "id": 4
-    },
-    {
-      "nombre": "Humberto",
-      "empresa": "H.R FronEnd",
-      "email": "humbertorivero9@gmail.com",
-      "telefono": "01149458678",
-      "notas": "pruebas",
-      "id": 5
     },
     {
       "nombre": "Rebeca Morshi",
@@ -47,6 +39,14 @@
       "telefono": "",
       "notas": "",
       "id": 6
+    },
+    {
+      "nombre": "Daniel",
+      "empresa": "H.R FronEnd",
+      "email": "wholesale@falleninternational.com",
+      "telefono": "20202020",
+      "notas": "Prueba",
+      "id": 7
     }
   ]
 }

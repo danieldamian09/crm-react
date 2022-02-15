@@ -28,21 +28,36 @@ function Formulario({cliente, cargando}) {
 	// evento Submit
 	const handleSubmit = async (values) => {
 		try {
-			const url = "http://localhost:4000/clientes";
+			let respuesta
+			if (cliente.id) {
+				// Editando registro
+				const url = `http://localhost:4000/clientes/${cliente.id}`;
 
-			const respuesta = await fetch(url, {
-				method: "POST",
-				body: JSON.stringify(values),
-				headers: {
-					"Content-Type": "application/json",
-				},
-			});
-			console.log(respuesta);
-			const resultado = await respuesta.json();
-			console.log(resultado);
+				respuesta = await fetch(url, {
+					method: "PUT",
+					body: JSON.stringify(values),
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
+			} else {
+				// Para nuevo registro
+				const url = "http://localhost:4000/clientes";
 
-			// para redirecionar al usuario
-			navigate("/clientes");
+				respuesta = await fetch(url, {
+					method: "POST",
+					body: JSON.stringify(values),
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
+			}
+
+				await respuesta.json();
+
+				// para redirecionar al usuario
+				navigate("/clientes");
+
 		} catch (error) {
 			console.log(error);
 		}
@@ -166,7 +181,7 @@ function Formulario({cliente, cargando}) {
 // Valores por default
 Formulario.defaultProps = {
 	cliente: {},
-	cargando: false
+	cargando: false,
 };
 
 export default Formulario;

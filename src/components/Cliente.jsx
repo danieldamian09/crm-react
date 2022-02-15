@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const Cliente = ({cliente}) => {
+const Cliente = ({cliente, handleEliminar}) => {
 	const {nombre, empresa, email, telefono, notas, id} = cliente;
 
 	const navigate = useNavigate()
@@ -37,6 +37,7 @@ const Cliente = ({cliente}) => {
 				<button
 					type="button"
 					className=" bg-red-600 hover:bg-red-700 block w-full text-white p-2 font-bold text-xs uppercase mt-3"
+					onClick={() => handleEliminar(id)}
 				>
 					Eliminar
 				</button>
